@@ -1,0 +1,319 @@
+---
+title: "PCERP Project Site"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+self_contained: false
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, warning=FALSE}
+source("libraries.R")
+source("project_recipients.R")
+source("project_indicators.R")
+```
+
+# Project Description
+
+The Philippines COVID-19 Emergency Response Project (PCERP), with the
+Project Development Objective (PDO) to strengthen the Philippines'
+capacity to prevent, detect, and respond to the threat posed by COVID-19
+and strengthen national systems for public health preparedness, was
+approved by the World Bank on 22 April 2020.
+
+Despite recent progress, the Philippines remains one of the countries
+most affected by the COVID-19 in East Asia and Pacific, rendering
+vaccine purchase and deployment a national priority. With the
+availability of vaccines, the Philippines has now an opportunity to add
+a significant new layer to its COVID-19 emergency response. Procuring
+and administering vaccines is critical to reducing mortality from COVID,
+opening the economy in earnest and arresting the decline in GDP,
+employment and incomes. Hence, Additional Financing (AF) was sought by
+the country to enable affordable and equitable access to COVID-19
+vaccines and help ensure effective vaccine deployment in the country
+through an enhanced vaccination system and to further strengthen
+preparedness and response activities.
+
+The original approved loan financing of US\$ 100 Million (Loan no.
+9105-PH) had been increased by US\$ 500 Million through the Additional
+Financing in 19 March 2021, to cover the procurement of vaccines against
+COVID- 19 and to support the DOH National Deployment and Vaccination
+Plan (NDVP) (Loan no. 9220-PH). The new total of the Project financing
+is US\$ 600 Million.
+
+The expected project beneficiaries will be the general population,
+including infected people, at-risk populations, particularly the elderly
+and people with chronic conditions, medical and emergency personnel,
+medical and testing facilities, and public health agencies engaged in
+the response.
+
+The project is comprised of the following four components:
+
+Component 1: Strengthening Emergency COVID-19 Health Care Response (US\$
+577,117,000) with the following sub-component:<br>          1.1
+Provision of medical and laboratory equipment and reagents;<br>         
+1.2 Provision of medical supplies, including Personal Protective
+Equipment (PPE), medical countermeasures, COVID-19 vaccines, medicines,
+and ambulances;<br>          1.3 Regular and intensive care isolation
+rooms with negative pressure;<br>          1.4 Deployment of COVID-19
+vaccines (new sub-component, financed by counterpart funding from the
+GOP
+
+Component 2: Strengthening laboratory capacity at national and
+sub-national level to support Emerging Infectious Diseases (EIDs)
+Prevention, Preparedness, and Response (US\$ 15,678,000): It includes
+improving, retrofitting, and refurbishing one national reference
+laboratory--the Research Institute for Tropical Medicine (RITM)---as
+well as six sub-national and public health laboratories in Baguio, Cebu,
+Davao, Surigao City, and Manila;
+
+Component 3: Implementation Management and Monitoring and Evaluation
+(US\$ 7,205,000): This component supports project management and
+monitoring, including the creation of a project management team and
+development of project monitoring and evaluation system; and
+
+Component 4: Contingent Emergency Response Component (CERC) (US\$0),
+which supports immediate response to an eligible crisis or health
+emergency.
+
+The Project Operations Manual (DOH Department Circular no. 2021-0142),
+Project's Implementation Arrangements (DOH Department Order no.
+2021-0205), Guidelines on the Project's Civil Works Implementation (DOH
+Department Circular no. 2020-0398), and the PCERP Contingency Emergency
+Response Component -- Emergency Response Operations Manual [CERC--EROM]
+(DOH Department Circular no. 2021-0314) are available in the resources
+tab.
+
+The closing date of the Project is on December 29, 2023.
+
+
+```{r}
+```
+
+# Project Recipients
+The following are the tentative recipients of the goods covered by the
+PCERP:
+
+Row {.tabset .tabset-pills}
+-------------------------------------
+
+## Items 
+### Equipment
+```{r}
+recipients_equipment%>%
+  DT::datatable(
+    height = 850,
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center', targets = 5)
+        ),
+      pageLength = 20
+      )
+    )
+
+```
+### Civil Works
+```{r}
+recipients_equipment%>%
+  DT::datatable(
+    height = 850,
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center', targets = 5)
+        ),
+      pageLength = 20
+      )
+    )
+
+```
+Row
+-------------------------------------
+
+## Leaflet here
+Asdasdad
+
+
+
+# Environmental and Social Framework (ESF)
+
+The Environmental and Social Management Framework (ESMF):
+
+-   is an instrument that examines risks and impacts of the project and
+    its components which cannot be determined until the program or the
+    subproject details have been identified
+
+-   describes principles, processes and technical guidance to the
+    Project implementing agencies and their consultants to assess the
+    environmental and social (E&S) risks and impacts of the Project
+    activities
+
+-   developed in accordance with the World Bank's Environmental and
+    Social Standards (ESSs)
+
+The Environmental and Social Standards (ESS) include:
+
+```{r}
+tibble(
+  col1 = paste0("ESS", 1:10),
+  col2 = c(
+    "Assessment and Management of Environmental and Social Risks and Impacts",
+    "Labor and Working Conditions",
+    "Resource Efficiency and Pollution Prevention and Management",
+    "Community Health and Safety",
+    "Land Acquisition, Restrictions on the Land Use and Involuntary Resettlement",
+    "Biodiversity Conservation and Sustainable Management
+of Living Natural Resources",
+"Indigenous Peoples/Sub-Saharan African Historically Underserved Traditional Local Communities",
+"Cultural Heritage",
+"Financial Intermediaries",
+"Stakeholder Engagement and Information Disclosure"
+  )
+)%>%
+  kbl(col.names = NULL)%>%
+  column_spec(1:2,
+              border_left = T,
+              border_right = T)%>%
+  kable_styling("striped")
+```
+
+\~ESS 5,6,8,and 9 are not related to the Project.\~
+
+The objectives of the ESMF are as follows:
+
+-   assess potential E&S risks and impacts of the Project & propose
+    mitigation measures for risks/impacts
+
+-   establish clear procedures for the E&S screening, review, approval,
+    and implementation of activities
+
+-   specify appropriate roles and responsibilities, and outline the
+    necessary reporting procedures
+
+-   identify the training and capacity building needed to successfully
+    implement the provisions of the ESMF
+
+-   address mechanisms for public consultation and disclosure of project
+    documents as well as redress of possible grievance f. establish the
+    budget requirement for implementation of the ESMF
+
+# Results Framework Indicators
+
+### The Project's Results Framework Indicators for the Parent Project (Original Loan) and Additional Financing are as follows:
+
+**A. Project Development Objective Indicators**
+
+```{r}
+PDI%>%
+    kbl(booktabs = T, format = "html", align = "l")%>%kable_styling(full_width = T)
+
+```
+**B. Intermediate Results Indicators**
+
+```{r}
+IRI$`Strengthening Emergency COVID-19 Health Care Response`%>%
+    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
+IRI$`Strengthening Laboratory Capacity at National and Sub-National Level`%>%
+    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
+IRI$`Implementation Management and Monitoring and Evaluation`%>%
+    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
+
+```
+# Project Dashboard 
+
+
+# Resources
+[Project Dashboard](https://doh.gov.ph/COVID-19/emergency-response-project/dashboard)
+ 
+[Project Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/DC%20NO.%202021-0142%20UPDATED%20POM.pdf)
+
+[Project's Implementation Arrangement](https://doh.gov.ph/sites/default/files/basic-page/DEPARTMENT%20ORDER%20NO.%202021-0205%20IMPLEMENTATION%20ARRANGEMENT.pdf)
+
+[Guidelines on the Project's Civil Works Implementation](https://doh.gov.ph/sites/default/files/basic-page/dc2020-0398.pdf)
+
+[Contingency Emergency Response Component -- Emergency Response Operations Manual]()
+
+[Stakeholder Engagement Plan (SEP) November 22, 2022](https://doh.gov.ph/sites/default/files/basic-page/SEP-nov-22-2021.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) November 22, 2022](https://doh.gov.ph/sites/default/files/basic-page/ESCP-nov-22-2021.pdf)
+
+[Stakeholder Engagement Plan (SEP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/No%20Watermark_Stakeholder%20Engagement%20Plan%20%28SEP%29_Second%20AF%20PCERP_November%2003%202021.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29_Second%20AF%20PCERP_November%2003%202021_0.pdf)
+
+[Stakeholder Engagement Plan (SEP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/SEP%2003172021.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP%2003172021.pdf)
+
+[Environmental and Social Management Framework (ESMF) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2003172021.pdf)
+
+[Stakeholder Engagement Plan (SEP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20SEP.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/02052021%20ESCP%20clean.pdf)
+
+[Environmental and Social Management Framework (ESMF) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20ESMF.pdf)
+
+[Stakeholder Engagement Plan (SEP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20SEP-%20vaccine.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
+
+[Environmental and Social Management Framework (ESMF) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
+
+[Stakeholder Engagement Plan (SEP) November 25, 2020]()
+
+[Environmental and Social Commitment Plan (ESCP) November 25, 2020]()
+
+[Environmental and Social Management Framework (ESMF) November 25, 2020]()
+
+[Stakeholder Engagement Plan (SEP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder-Engagement-Plan-v20201009.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29%20%281%29.pdf)
+
+[Environmental and Social Management Framework (ESMF) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2011252020%20%281%29.pdf)
+
+[Stakeholder Engagement Plan (SEP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder%20Engagement%20Plan%20%28SEP%29.pdf)
+
+[Environmental and Social Commitment Plan (ESCP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29.pdf)
+
+[Environmental and Social Management Framework (ESMF) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Management%20Framework.pdf)
+
+# Contact us
+For inquiries or recommendations, you may contact:<br><br>
+<b>On the Project:</b><br>
+Mr. Manolito A. Novales<br>
+Project Coordinator IV<br>
+[manovales\@doh.gov.ph](mailto:manovales@doh.gov.ph){.email}<br>
+(02)8651 7800 local 1317<br><br>
+
+<b>On the Environmental and Social Framework:</b><br>
+Ms. ⁨Maria Krystell G. Banaag-Año⁩<br
+Environmental and Social Safeguards Specialist<br>
+[mkbano\@doh.gov.ph](mailto:mkbano@doh.gov.ph){.email}<br>
+(02) 8651 7800 local 2324<br><br>
+
+<b>On the Monitoring and Evaluation:</b><br>
+Ms. Vega Fria G. Postrano<br>
+Monitoring and Evaluation Specialist<br>
+[vfgpostrano\@doh.gov.ph](mailto:vfgpostrano@doh.gov.ph){.email}<br>
+(02) 8651 7800 local 1453<br>
+
+Mr. John Conrad P. Dacusin<br>
+Project Assistant<br>
+[jcpdacusin\@doh.gov.ph](mailto:jcpdacusin@doh.gov.ph){.email}<br>
+(02)8651 7800 local 1453<br>
+
+Mr. Mark Benedict K. Mortera<br>
+Project Assistant<br>
+[mbkmortera\@doh.gov.ph](mailto:mbkmortera@doh.gov.ph){.email}<br>
+(02)8651 7800 local 1453<br><br>
+
+<b>On the Deployment of the Project Procured Vaccines</b><br>
+Ms. Hannah P. Jara<br>
+Project Assistant<br>
+hpjara@doh.gov.ph<br>
+(02) 8651 7800 local 2361
