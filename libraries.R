@@ -6,6 +6,8 @@ library(htmlwidgets)
 library(kableExtra)
 library(DT)
 library(leaflet)
+library(readxl)
+library(googledrive)
 
 #### default colors----
 default_red <- "#f8766d"

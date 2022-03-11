@@ -9,7 +9,8 @@ editor_options:
     wrap: 72
 ---
 
-```{r setup, warning=FALSE}
+
+```r
 source("libraries.R")
 source("project_recipients.R")
 source("project_indicators.R")
@@ -89,54 +90,74 @@ tab.
 The closing date of the Project is on December 29, 2023.
 
 
-```{r}
-```
+
 
 # Project Recipients
 The following are the tentative recipients of the goods covered by the
 PCERP:
 
-Row {.tabset .tabset-pills}
--------------------------------------
 
-## Items 
 ### Equipment
-```{r}
+
+```r
 recipients_equipment%>%
+  filter(project_description %in% c("Mechanical Ventilator",
+                                    "Ambulance Type 2",
+                                    "Infusion Pump",
+                                    "Portable X-ray")
+         )%>%
+  select(facility_name,
+         region,
+         project_description,
+         quantity)%>%
+  arrange(project_description)%>%
+  # mutate(facility_name = facility_name%>%
+  #          str_replace_all("ñ", "\\ñ"))%>%
   DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Region" = "region",
+                 "Facility Name" = "facility_name",
+                 "Quantity" = "quantity"),
     height = 850,
     options = list(
       scrollY = "450px",
       columnDefs = list(
         list(
-          className = 'dt-center', targets = 5)
+          className = 'dt-center')
         ),
       pageLength = 20
       )
     )
-
 ```
-### Civil Works
-```{r}
-recipients_equipment%>%
+
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+### RT PCR
+
+```r
+rt_pcr%>%
   DT::datatable(
+    colnames = c(
+      "Province" = "province",
+      "Region" = "region",
+      "Facility Name" = "facility_name"
+    ),
     height = 850,
     options = list(
       scrollY = "450px",
       columnDefs = list(
         list(
-          className = 'dt-center', targets = 5)
+          className = 'dt-center')
         ),
       pageLength = 20
       )
     )
-
 ```
-Row
--------------------------------------
+
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+
 
 ## Leaflet here
-Asdasdad
+**Map here**
 
 
 
@@ -158,7 +179,8 @@ The Environmental and Social Management Framework (ESMF):
 
 The Environmental and Social Standards (ESS) include:
 
-```{r}
+
+```r
 tibble(
   col1 = paste0("ESS", 1:10),
   col2 = c(
@@ -181,6 +203,52 @@ of Living Natural Resources",
               border_right = T)%>%
   kable_styling("striped")
 ```
+
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<tbody>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS1 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Assessment and Management of Environmental and Social Risks and Impacts </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS2 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Labor and Working Conditions </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS3 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Resource Efficiency and Pollution Prevention and Management </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS4 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Community Health and Safety </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS5 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Land Acquisition, Restrictions on the Land Use and Involuntary Resettlement </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS6 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Biodiversity Conservation and Sustainable Management
+of Living Natural Resources </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS7 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Indigenous Peoples/Sub-Saharan African Historically Underserved Traditional Local Communities </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS8 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Cultural Heritage </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS9 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Financial Intermediaries </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> ESS10 </td>
+   <td style="text-align:left;border-left:1px solid;border-right:1px solid;"> Stakeholder Engagement and Information Disclosure </td>
+  </tr>
+</tbody>
+</table>
 
 \~ESS 5,6,8,and 9 are not related to the Project.\~
 
@@ -208,79 +276,235 @@ The objectives of the ESMF are as follows:
 
 **A. Project Development Objective Indicators**
 
-```{r}
+
+```r
 PDI%>%
     kbl(booktabs = T, format = "html", align = "l")%>%kable_styling(full_width = T)
-
 ```
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Indicators </th>
+   <th style="text-align:left;"> Target (2021) </th>
+   <th style="text-align:left;"> Status </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Percentage of hospitals with personal protective equipment and infection control products and supplies according to DOH requirements, without stock-outs in preceding one month </td>
+   <td style="text-align:left;"> 65% </td>
+   <td style="text-align:left;"> 80% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Percentage of designated laboratories with COVID-19 diagnostic equipment, test kits, and reagents, without stock-outs in preceding one month </td>
+   <td style="text-align:left;"> 50% </td>
+   <td style="text-align:left;"> 71% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Number of acute healthcare facilities with isolation capacity according to DOH-established standards </td>
+   <td style="text-align:left;"> 40 </td>
+   <td style="text-align:left;"> 43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Share of project-targeted health workers received COVID vaccine </td>
+   <td style="text-align:left;"> 80% </td>
+   <td style="text-align:left;"> 92% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Share of project-targeted population given full dose of COVID-19 vaccination </td>
+   <td style="text-align:left;"> 70% </td>
+   <td style="text-align:left;"> 82% </td>
+  </tr>
+</tbody>
+</table>
 **B. Intermediate Results Indicators**
 
-```{r}
+
+```r
 IRI$`Strengthening Emergency COVID-19 Health Care Response`%>%
     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
+```
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>Strengthening Emergency COVID-19 Health Care Response</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Indicators </th>
+   <th style="text-align:left;"> Target (2021) </th>
+   <th style="text-align:left;"> Status </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Standard design for hospital isolation and treatment centers to manage Severe Acute Respiratory Infections (SARI) patients is finalized (Yes/No) </td>
+   <td style="text-align:left;"> Yes </td>
+   <td style="text-align:left;"> Yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Number of ventilators provided to hospitals </td>
+   <td style="text-align:left;"> 500 </td>
+   <td style="text-align:left;"> 500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Number of health staff trained in infection prevention and control per DOH-approved protocols </td>
+   <td style="text-align:left;"> 13000 </td>
+   <td style="text-align:left;"> 17505 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Share of hospitals designated as vaccination sites in project areas having adequate and functioning cold chain equipment (CCE) maintaining the temperature required for the COVID-19 vaccine assigned </td>
+   <td style="text-align:left;"> 100% </td>
+   <td style="text-align:left;"> 100% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Share of project-targeted vaccinated population who rated as satisfactory the COVID-19 vaccination service received </td>
+   <td style="text-align:left;"> 80% </td>
+   <td style="text-align:left;"> 97% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Share of project-targeted population reporting adverse event following immunization (AEFI) having received additional care and free treatment </td>
+   <td style="text-align:left;"> 80% </td>
+   <td style="text-align:left;"> 74% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> National COVID-19 vaccination tools developed </td>
+   <td style="text-align:left;"> Yes </td>
+   <td style="text-align:left;"> Yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eligibility for vaccination criteria include barangay health workers (BHWs) among priority group </td>
+   <td style="text-align:left;"> Yes </td>
+   <td style="text-align:left;"> Yes </td>
+  </tr>
+</tbody>
+</table>
+
+```r
 IRI$`Strengthening Laboratory Capacity at National and Sub-National Level`%>%
     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
+```
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>Strengthening Emergency COVID-19 Health Care Response</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Indicators </th>
+   <th style="text-align:left;"> Target (2021) </th>
+   <th style="text-align:left;"> Status </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Daily capacity of a designated national laboratory (RITM) in conducting COVID-19 diagnostic tests </td>
+   <td style="text-align:left;"> 1200 </td>
+   <td style="text-align:left;"> 117 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Daily capacity of a designated sub-national laboratory (Davao) in conducting COVID-19 diagnostic tests </td>
+   <td style="text-align:left;"> 500 </td>
+   <td style="text-align:left;"> 459 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Daily capacity of a designated sub-national laboratory (Cebu) in conducting COVID-19 diagnostic tests </td>
+   <td style="text-align:left;"> 500 </td>
+   <td style="text-align:left;"> 465 </td>
+  </tr>
+</tbody>
+</table>
+
+```r
 IRI$`Implementation Management and Monitoring and Evaluation`%>%
     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
-
 ```
-# Project Dashboard 
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>Strengthening Emergency COVID-19 Health Care Response</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Indicators </th>
+   <th style="text-align:left;"> Target (2021) </th>
+   <th style="text-align:left;"> Status </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> M&amp;E system established to monitor project activities </td>
+   <td style="text-align:left;"> Yes </td>
+   <td style="text-align:left;"> Yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Functional asset management system is in place, independently reviewed on 6-monthly basis </td>
+   <td style="text-align:left;"> Yes </td>
+   <td style="text-align:left;"> Yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Percentage of grievances resolved to the satisfaction of the complainant within timeframe specified in the GRM for stakeholders </td>
+   <td style="text-align:left;"> 80% </td>
+   <td style="text-align:left;"> 100% </td>
+  </tr>
+</tbody>
+</table>
 
 
 # Resources
-[Project Dashboard](https://doh.gov.ph/COVID-19/emergency-response-project/dashboard)
- 
+
+## Project Dashboard
+For more information on the Project indicators and the Project at large please visit our [Project Dashboard](https://doh.gov.ph/COVID-19/emergency-response-project/dashboard)
+
+## Downloadable Files
 [Project Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/DC%20NO.%202021-0142%20UPDATED%20POM.pdf)
-
+<br>
 [Project's Implementation Arrangement](https://doh.gov.ph/sites/default/files/basic-page/DEPARTMENT%20ORDER%20NO.%202021-0205%20IMPLEMENTATION%20ARRANGEMENT.pdf)
-
+<br>
 [Guidelines on the Project's Civil Works Implementation](https://doh.gov.ph/sites/default/files/basic-page/dc2020-0398.pdf)
-
+<br>
 [Contingency Emergency Response Component -- Emergency Response Operations Manual]()
-
+<br>
 [Stakeholder Engagement Plan (SEP) November 22, 2022](https://doh.gov.ph/sites/default/files/basic-page/SEP-nov-22-2021.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) November 22, 2022](https://doh.gov.ph/sites/default/files/basic-page/ESCP-nov-22-2021.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/No%20Watermark_Stakeholder%20Engagement%20Plan%20%28SEP%29_Second%20AF%20PCERP_November%2003%202021.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29_Second%20AF%20PCERP_November%2003%202021_0.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/SEP%2003172021.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP%2003172021.pdf)
-
+<br>
 [Environmental and Social Management Framework (ESMF) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2003172021.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20SEP.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/02052021%20ESCP%20clean.pdf)
-
+<br>
 [Environmental and Social Management Framework (ESMF) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20ESMF.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20SEP-%20vaccine.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
-
+<br>
 [Environmental and Social Management Framework (ESMF) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) November 25, 2020]()
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) November 25, 2020]()
-
+<br>
 [Environmental and Social Management Framework (ESMF) November 25, 2020]()
-
+<br>
 [Stakeholder Engagement Plan (SEP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder-Engagement-Plan-v20201009.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29%20%281%29.pdf)
-
+<br>
 [Environmental and Social Management Framework (ESMF) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2011252020%20%281%29.pdf)
-
+<br>
 [Stakeholder Engagement Plan (SEP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder%20Engagement%20Plan%20%28SEP%29.pdf)
-
+<br>
 [Environmental and Social Commitment Plan (ESCP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29.pdf)
-
+<br>
 [Environmental and Social Management Framework (ESMF) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Management%20Framework.pdf)
+<br>
+
 
 # Contact us
 For inquiries or recommendations, you may contact:<br><br>
