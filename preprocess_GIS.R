@@ -79,6 +79,7 @@ bed_icon <- awesomeIcons(
 )
 
 plotted_GIS <- leaflet(merged_GIS) %>%
+  addProviderTiles(providers$OpenStreetMap)%>%
   addTiles(options = tileOptions(minZoom = 5.15)) %>%
   addAwesomeMarkers(lng = ~as.numeric(Longitude),
                     lat = ~as.numeric(Latitude),
