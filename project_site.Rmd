@@ -92,13 +92,11 @@ The closing date of the Project is on December 29, 2023.
 
 ## Mapping {.tabset}
 ### Civil Works
+
 ```{r}
 plotted_GIS
 ```
-### Civil Works 2
-```{r}
-plotted_GIS
-```
+
 ## Recipient Tables {.tabset}
 ### Equipment
 ```{r}
@@ -122,6 +120,7 @@ recipients_equipment%>%
                  "Facility Name" = "facility_name",
                  "Quantity" = "quantity"),
     height = 850,
+    filter = "none",
     options = list(
       scrollY = "450px",
       columnDefs = list(
@@ -130,6 +129,7 @@ recipients_equipment%>%
           targets = 2:4
           )
         ),
+      # searching = F,
       pageLength = 20
       )
     )
@@ -153,6 +153,7 @@ rt_pcr%>%
           targets = 1:2
           )
         ),
+      # searching = F,
       pageLength = 20
       )
     )
@@ -248,10 +249,11 @@ IRI$`Implementation Management and Monitoring and Evaluation`%>%
 
 # Resources
 
-## Project Dashboard
-For more information on the Project indicators and the Project at large please visit our [Project Dashboard](https://doh.gov.ph/COVID-19/emergency-response-project/dashboard)
 
-## Downloadable Files
+For more information on the Project indicators and the Project at large please visit our [Project Dashboard](https://doh.gov.ph/COVID-19/emergency-response-project/dashboard)
+<br>
+<br>
+
 [Project Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/DC%20NO.%202021-0142%20UPDATED%20POM.pdf)
 <br>
 [Project's Implementation Arrangement](https://doh.gov.ph/sites/default/files/basic-page/DEPARTMENT%20ORDER%20NO.%202021-0205%20IMPLEMENTATION%20ARRANGEMENT.pdf)
@@ -349,6 +351,6 @@ Project Assistant<br>
 
 <b>On the Deployment of the Project Procured Vaccines</b><br>
 Ms. Hannah P. Jara<br>
-Project Assistant<br>
+Vaccine Specialist<br>
 hpjara@doh.gov.ph<br>
 (02) 8651 7800 local 2361
