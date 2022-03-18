@@ -83,11 +83,9 @@ bed_icon <- awesomeIcons(
 #   iconWidth = 18
 #   )
 
-plotted_GIS <- leaflet(merged_GIS,
-                       options = leafletOptions(
-                         minZoom = 6
-                       )) %>%
-  addProviderTiles(providers$Esri.NatGeoWorldMap)%>%
+plotted_GIS <- leaflet(merged_GIS
+                       ) %>%
+  addProviderTiles(providers$OpenStreetMap)%>%
   addAwesomeMarkers(lng = ~as.numeric(Longitude),
                     lat = ~as.numeric(Latitude),
                     popup = ~popup,

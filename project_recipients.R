@@ -81,7 +81,7 @@ recipients_equipment <- tibble(
                             "Region 3","Region 3","Region 3","Region 3"),
           facility_name = c("Cebu Station (BOQ)",
                             "Dagupan City","La Union","Ilagan, Isabela",
-                            "Las Piñas - Trc","Tagaytay City","Malinao, Albay",
+                            "Las Piñas - TRC","Tagaytay City","Malinao, Albay",
                             "San Fernando, Camarines Sur","Pototan, Iloilo",
                             "Argao, Cebu","Cebu City","Dulag, Leyte",
                             "Malaybalay, Bukidnon","Davao City","Caraga",

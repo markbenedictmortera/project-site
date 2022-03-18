@@ -1,7 +1,7 @@
 ---
-title: "project_recipients_only"
+title: "Project Recipients"
 output: flexdashboard::flex_dashboard
-self_contained: true
+self_contained: false
 editor_options: 
   markdown: 
     wrap: 72
@@ -22,13 +22,10 @@ plotted_GIS
 ```
 
 ## Recipient Tables {.tabset}
-### Equipment
+### Mechanical Ventilator
 ```{r}
 recipients_equipment%>%
-  filter(project_description %in% c("Mechanical Ventilator",
-                                    "Ambulance Type 2",
-                                    "Infusion Pump",
-                                    "Portable X-ray")
+  filter(project_description %in% c("Mechanical Ventilator")
          )%>%
   select(facility_name,
          region,
@@ -37,7 +34,7 @@ recipients_equipment%>%
   arrange(project_description)%>%
   mutate(facility_name = facility_name%>%
            str_replace_all(".*General Hospital and Satellite Trauma Center",
-                           "Las Pinas General Hospital and Satellite Trauma Center"))%>%
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
   DT::datatable(
     colnames = c("Item" = "project_description",
                  "Region" = "region",
@@ -59,6 +56,147 @@ recipients_equipment%>%
     )
 
 ```
+
+### Portable X-ray
+```{r}
+recipients_equipment%>%
+  filter(project_description %in% c("Portable X-ray")
+         )%>%
+  select(facility_name,
+         region,
+         project_description,
+         quantity)%>%
+  arrange(project_description)%>%
+  mutate(facility_name = facility_name%>%
+           str_replace_all(".*General Hospital and Satellite Trauma Center",
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
+  DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Region" = "region",
+                 "Facility Name" = "facility_name",
+                 "Quantity" = "quantity"),
+    height = 850,
+    filter = "none",
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center',
+          targets = 2:4
+          )
+        ),
+      # searching = F,
+      pageLength = 20
+      )
+    )
+
+```
+
+### Infusion Pump
+```{r}
+recipients_equipment%>%
+  filter(project_description %in% c("Infusion Pump")
+         )%>%
+  select(facility_name,
+         region,
+         project_description,
+         quantity)%>%
+  arrange(project_description)%>%
+  mutate(facility_name = facility_name%>%
+           str_replace_all(".*General Hospital and Satellite Trauma Center",
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
+  DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Region" = "region",
+                 "Facility Name" = "facility_name",
+                 "Quantity" = "quantity"),
+    height = 850,
+    filter = "none",
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center',
+          targets = 2:4
+          )
+        ),
+      # searching = F,
+      pageLength = 20
+      )
+    )
+
+```
+
+### Ambulance
+```{r}
+recipients_equipment%>%
+  filter(grepl("Ambulance", .$project_description, ignore.case = T)
+         )%>%
+  select(facility_name,
+         region,
+         project_description,
+         quantity)%>%
+  arrange(project_description)%>%
+  mutate(facility_name = facility_name%>%
+           str_replace_all(".*General Hospital and Satellite Trauma Center",
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
+  DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Region" = "region",
+                 "Facility Name" = "facility_name",
+                 "Quantity" = "quantity"),
+    height = 850,
+    filter = "none",
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center',
+          targets = 2:4
+          )
+        ),
+      # searching = F,
+      pageLength = 20
+      )
+    )
+
+```
+
+### Consumables
+```{r}
+recipients_equipment%>%
+  filter(project_description %in% c("PPE and Mask")
+         )%>%
+  select(facility_name,
+         region,
+         project_description,
+         quantity)%>%
+  arrange(project_description)%>%
+  mutate(facility_name = facility_name%>%
+           str_replace_all(".*General Hospital and Satellite Trauma Center",
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
+  DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Region" = "region",
+                 "Facility Name" = "facility_name",
+                 "Quantity" = "quantity"),
+    height = 850,
+    filter = "none",
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center',
+          targets = 2:4
+          )
+        ),
+      # searching = F,
+      pageLength = 20
+      )
+    )
+
+```
+
 ### RT PCR
 ```{r}
 rt_pcr%>%
@@ -84,4 +222,34 @@ rt_pcr%>%
 
 ```
 
+### Civil Works
+```{r}
+merged_GIS%>%
+  select(Facility.Name,
+         project_description,
+         status)%>%
+  arrange(project_description,
+          Facility.Name)%>%
+  mutate(Facility.Name = Facility.Name%>%
+           str_replace_all(".*General Hospital and Satellite Trauma Center",
+                           "Las Piñas General Hospital and Satellite Trauma Center"))%>%
+  DT::datatable(
+    colnames = c("Item" = "project_description",
+                 "Status" = "status",
+                 "Facility Name" = "Facility.Name"),
+    height = 850,
+    filter = "none",
+    options = list(
+      scrollY = "450px",
+      columnDefs = list(
+        list(
+          className = 'dt-center',
+          targets = 2:3
+          )
+        ),
+      # searching = F,
+      pageLength = 20
+      )
+    )
 
+```

@@ -16,7 +16,8 @@ readNHFR <- function(folder = "geotags") {
                                        "Infirmary",
                                        "Provincial Health office",
                                        "Municipal Health Office",
-                                       "City Health Office"))
+                                       "City Health Office",
+                                       "Quarantine Station"))
 }
 
 governmentFacility <- function(file = nhfr) {
