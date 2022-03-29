@@ -8,6 +8,12 @@ getConstruction(F)
 #   mutate(facility_name = toupper(facility_name))%>%
 #   anti_join(government_facilities, by = c("facility_name" = "Facility.Name"))
 
+merged_recipients <- merge(government_facilities,
+                           recipients_equipment,
+                           by.x = "Facility.Name",
+                           by.y = "facility_name")%>%
+  replace(is.na(.), "")
+
 merged_GIS <- merge(government_facilities,
                     construction_status,
                     by.x = "Facility.Name",
@@ -71,27 +77,6 @@ merged_GIS <- merged_GIS %>% mutate(popup =  paste(
 status_color <- colorFactor(c(default_red, default_green, default_blue),
                             domain = c("not_started", "ongoing", "completed"))
 
-bed_icon <- awesomeIcons(
-  "fa-bed",
-  "fa",
-  markerColor = "black",
-  "pink"
-)
-
-# glyph_bed <- makeIcon(
-#   "https://glyphicons.com/img/glyphicons/basic/2x/glyphicons-basic-516-bed-sleeping@2x.png",
-#   iconWidth = 18
-#   )
-
-plotted_GIS <- leaflet(merged_GIS
-                       ) %>%
-  addProviderTiles(providers$OpenStreetMap)%>%
-  addAwesomeMarkers(lng = ~as.numeric(Longitude),
-                    lat = ~as.numeric(Latitude),
-                    popup = ~popup,
-                    icon = bed_icon)
-
-plotted_GIS
   
 # plotted_GIS2 <- leaflet(merged_GIS) %>%
 #   addProviderTiles(providers$OpenStreetMap)%>%
