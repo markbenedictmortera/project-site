@@ -1,3 +1,5 @@
+source("preprocess_GIS.R")
+
 
 bed_icon <- awesomeIcons(
   "fa-bed",
