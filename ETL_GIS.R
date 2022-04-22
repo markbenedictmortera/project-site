@@ -36,8 +36,6 @@ getConstruction <- function (.refresh_deliverables = F) {
          envir = .GlobalEnv)
   }
 
-# addPopups <- function(data, )
-
 
 # gis_data <- read_xlsx("GPS Points of Civil Works for mapping.xlsx",
 #                       sheet = "GPS Points",
@@ -69,4 +67,3 @@ getConstruction <- function (.refresh_deliverables = F) {
 #              lat = ~as.numeric(latitude),
 #              popup= ~popup
 #              )
-
