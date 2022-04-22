@@ -9,10 +9,12 @@ getConstruction(F)
 #   anti_join(government_facilities, by = c("facility_name" = "Facility.Name"))
 
 merged_recipients <- merge(government_facilities,
-                           recipients_equipment,
+                           recipients_equipment%>%mutate(facility_name = toupper(facility_name)),
                            by.x = "Facility.Name",
-                           by.y = "facility_name")%>%
-  replace(is.na(.), "")
+                           by.y = "facility_name"
+                           )%>%
+  replace(is.na(.),
+          "")
 
 merged_GIS <- merge(government_facilities,
                     construction_status,

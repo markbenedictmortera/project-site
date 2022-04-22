@@ -36,6 +36,8 @@ getConstruction <- function (.refresh_deliverables = F) {
          envir = .GlobalEnv)
   }
 
+# addPopups <- function(data, )
+
 
 # gis_data <- read_xlsx("GPS Points of Civil Works for mapping.xlsx",
 #                       sheet = "GPS Points",
@@ -68,34 +70,3 @@ getConstruction <- function (.refresh_deliverables = F) {
 #              popup= ~popup
 #              )
 
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-merge(government_facilities,
-      construction_status,
-      by.x = "Facility.Name",
-      by.y = "facility")%>%
-  replace(is.na(.), "")%>%
-  select(Facility.Name,
-         Longitude,
-         Latitude,
-         Official.Website,
-         amount,
-         project_description,
-         year,
-         status,
-         site_photos)%>%
-  mutate(status = status%>%str_replace_all("_", " ")%>%str_to_sentence)

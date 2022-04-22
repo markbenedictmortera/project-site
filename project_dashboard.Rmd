@@ -13,17 +13,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Dashboards {.tabset}
 
-### Form A
+### PCERP Form A PPE Supplies
 
-<iframe title="PowerBi Form A" width="100%" height="100%" margin="auto" width="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZmVhOTNhMjMtOTEyOS00ZDgwLTgwYTItZTM3MDNmNjZmZjRmIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&amp;pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1">
+<iframe title="PowerBi Form A" width="100%" height="100%" margin="auto" width="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZDYwMzNhNjktZmY4NS00NTQyLWI2OTctOGUxYTZkYWEzNzY1IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
+
+
+### PCERP Form B Laboratory Supplies
+
+<iframe title="PowerBi Form B" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiNmI2YTg1NWYtODI4Yy00NWQ4LThkMTUtNTE0ODY3OGRhM2JjIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
 
 </iframe>
 
-### Form B
-
-<iframe title="PowerBi Form B" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiMGE5N2MwNzgtZThkZS00YzA0LWFmZTktZjliZGY3YzdkMTdkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&amp;pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1">
-
-</iframe>
 
 ### ESMP Community Environmental Health and Safety
 
@@ -36,6 +38,14 @@ knitr::opts_chunk$set(echo = TRUE)
 <iframe title="ESF 002 ESMP Occupational Health and Safety - Total mitigation measures" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiZmQ2YWJjZDYtYzAzNy00YjVmLWE5M2MtYzA1NjVhZmE4Y2I1IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
 
 </iframe>
+
+### ECOP Environmental Codes of Practice
+
+<iframe title="ESF 003 ECOP Environmental Codes of Practice" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiOGUxZjQ5ZGQtNDllNy00ODI0LWFkODAtZDA1MmNiZDhmMGJkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1"></iframe> 
+
+### LMP Labor Management Procedure
+
+<iframe title="ESF 004 LMP Labor Management Procedure - Labor and Working Conditions" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiZWM1NTBkZDctYmU0YS00OTc0LTg0NjUtNTJhODc5YThlMjg5IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
 
 ### PCERP Procured Modern and Pfizer Vaccine Monitoring
 

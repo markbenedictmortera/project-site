@@ -1,0 +1,112 @@
+.value-box-indicators {
+    height: 60 !important;
+    width: 290px !important;
+    max-width: 290px !important;
+    box-shadow: none;
+}
+
+.value-box-indicators .value{
+    height: 60 !important;
+    font-size: 30px;
+}
+
+.value-box-indicators .caption{
+    height: 60 !important;
+    font-size: 15px;
+}
+
+.value-box{
+    width: 320px !important;
+    box-shadow: none;
+}
+
+
+.value-box .caption{
+    color: white;
+    font-size: 15px;
+    width: 180px !important;
+    max-width: 180px !important;
+}
+
+
+.value-box .value{
+    color: white;
+    font-size: 30px;
+    width: 180px !important;
+    max-width: 180px !important;
+}
+
+
+.value-box .icon i.fa.fa-lungs-virus{
+    
+    color: rgb(255, 255, 255); /*white*/
+  
+}
+
+.value-box .icon i.fa.fa-ambulance{
+    
+    color: rgb(255, 255, 255); /*white*/
+  
+}
+
+.value-box .icon i.fa.fa-pump-medical{
+    
+    color: rgb(255, 255, 255); /*white*/
+  
+}
+
+.value-box .icon i.fa.fa-x-ray{
+    
+    color: rgb(255, 255, 255); /*white*/
+}
+
+.value-box .icon i.fa.fa-procedures{
+    
+    color: rgb(255, 255, 255); /*white*/
+  
+}
+
+
+.value-box .icon i.fa.fa-shield-virus{
+    
+    color: rgb(255, 255, 255); /*white*/
+}
+
+
+
+.value-box .icon i.fa.fa-check-circle{
+    color: white; 
+    /*color: rgb(7, 115, 209); default_blue*/
+    font-size: 45px;
+    
+  
+}
+
+.value-box .icon i.fa.fa-times-circle{
+    color: white;
+    /*color: rgb(251, 193, 116); */
+    font-size: 45px;
+  
+}
+
+.value-box-headers {
+    color: black;
+    height: 60 !important;
+    width: 330px !important;
+    max-width: 330px !important;
+    box-shadow: none;
+}
+
+.value-box-headers .value{
+    height: 60 !important;
+    font-size: 22px;
+    width: 330px !important;
+    max-width: 330px !important;
+    color: black;
+}
+
+.value-box-headers .caption{
+    height: 40 !important;
+    color: black;
+    font-size: 15px;
+}

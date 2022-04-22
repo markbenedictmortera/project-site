@@ -8,6 +8,10 @@ library(DT)
 library(leaflet)
 library(readxl)
 library(googledrive)
+library(data.table)
+
+#### default settings----
+options(scipen=99999)
 
 #### default colors----
 default_red <- "#f8766d"

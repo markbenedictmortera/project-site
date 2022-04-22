@@ -1,6 +1,8 @@
 ---
 title: "PCERP Project Site"
-output: flexdashboard::flex_dashboard
+output:
+  flexdashboard::flex_dashboard:
+    css: www/styles.css
 self_contained: false
 editor_options: 
   markdown: 
@@ -10,11 +12,99 @@ editor_options:
 ```{r setup, warning=FALSE}
 source("libraries.R")
 source("project_recipients.R")
-source("project_indicators.R")
-source("preprocess_GIS.R")
+source("leaflet_maps.R")
+source("process_project_indicators.R")
+htmltools::tagList(fontawesome::fa_html_dependency())
+
+```
+
+```{css}
+.box-inside {border: 1px #e2e2e2 solid; height: 200px;}
+.top-box {margin: -20px -10px 5px -10px;}
+.right-rows {height: 50%; margin-left: auto; margin-right: auto}
+#section-column-2 .chart-shim.flowing-content-shim.flowing-content-container {
+    overflow-y: hidden;
+}
 ```
 
 # Project Description
+
+
+Column {data-width = 20%}
+-------------------------------------
+    
+### Mech vent valuebox {.value-box}
+    
+```{r}
+flexdashboard::valueBox(500,
+                        caption = "Mechanical ventilators delivered to recipient health facilities",
+                        icon="fa-lungs-virus",
+                        color = default_blue
+                        )
+```
+
+### Type 2 ambulance valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox(44,
+         "Type 2 ambulance delivered to recipient health facilities",
+         icon = "fa-ambulance",
+         color = default_blue
+         )
+```
+
+### Infusion pump valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox("70",
+         "Infusion pumps delivered to recipient health facilities",
+         icon = "fa-pump-medical",
+         color = default_blue
+         )
+```
+
+### Portable X-ray valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox("119",
+         "Portable X-rays delivered to recipient health facilities",
+         icon = "fa-x-ray",
+         color = default_blue
+         )
+```
+
+### Civil Works valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox("93",
+         "Additional isolation capacity constructed",
+         icon = "fa-procedures",
+         color = default_blue
+         )
+```
+
+### Pfizer valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox("19,500,150",
+         "doses of Pfizer vaccine procured",
+         icon = "fa-shield-virus",
+         color = default_blue
+         )
+```
+
+### Moderna valuebox {.value-box}
+
+```{r}
+flexdashboard::valueBox("13,019,830",
+         "doses of Moderna vaccine procured",
+         icon = "fa-shield-virus",
+         color = default_blue
+         )
+```
+
+Column {data-width=11500}
+-------------------------------------
 
 The Philippines COVID-19 Emergency Response Project (PCERP), with the
 Project Development Objective (PDO) to strengthen the Philippines'
@@ -91,6 +181,7 @@ The closing date of the Project is on December 29, 2023.
 # Project Recipients
 
 ## Mapping {.tabset}
+
 ### Civil Works
 
 ```{r}
@@ -98,7 +189,9 @@ plotted_GIS
 ```
 
 ## Recipient Tables {.tabset}
+
 ### Mechanical Ventilator
+
 ```{r}
 recipients_equipment%>%
   filter(project_description %in% c("Mechanical Ventilator")
@@ -134,6 +227,7 @@ recipients_equipment%>%
 ```
 
 ### Portable X-ray
+
 ```{r}
 recipients_equipment%>%
   filter(project_description %in% c("Portable X-ray")
@@ -169,6 +263,7 @@ recipients_equipment%>%
 ```
 
 ### Infusion Pump
+
 ```{r}
 recipients_equipment%>%
   filter(project_description %in% c("Infusion Pump")
@@ -204,6 +299,7 @@ recipients_equipment%>%
 ```
 
 ### Ambulance
+
 ```{r}
 recipients_equipment%>%
   filter(grepl("Ambulance", .$project_description, ignore.case = T)
@@ -239,6 +335,7 @@ recipients_equipment%>%
 ```
 
 ### Consumables
+
 ```{r}
 recipients_equipment%>%
   filter(project_description %in% c("PPE and Mask")
@@ -274,6 +371,7 @@ recipients_equipment%>%
 ```
 
 ### RT PCR
+
 ```{r}
 rt_pcr%>%
   DT::datatable(
@@ -299,6 +397,7 @@ rt_pcr%>%
 ```
 
 ### Civil Works
+
 ```{r}
 merged_GIS%>%
   select(Facility.Name,
@@ -329,7 +428,6 @@ merged_GIS%>%
     )
 
 ```
-
 
 # Environmental and Social Framework (ESF)
 
@@ -393,157 +491,816 @@ The objectives of the ESMF are as follows:
     documents as well as redress of possible grievance f. establish the
     budget requirement for implementation of the ESMF
 
-# Results Framework Indicators
 
-### The Project's Results Framework Indicators for the Parent Project (Original Loan) and Additional Financing are as follows:
 
-**A. Project Development Objective Indicators**
+# Results Framework Indicators {data-orientation=rows}
+
+
+<!-- Column {.sidebar style='max-width: 200px;'} -->
+<!-- ------------------ -->
+
+<!-- #### Project Development Objectives -->
+
+<!-- ```{r} -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+
+<!-- #### Intermediate Results Indicator -->
+
+<!-- ##### Strengthening Emergency COVID-19 Health Care Response -->
+
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+
+<!-- ##### Strengthening Laboratory Capacity at National and Sub-National Level -->
+
+
+<!-- <br> -->
+<!-- <br> -->
+<!-- <br> -->
+
+
+<!-- ##### Implementation Management and Monitoring and Evaluation -->
+
+The Project's Results Framework Indicators for the Parent Project (Original Loan) and Additional Financing 1 and 2 are as follows:
+
+Row
+-----------------------
+
+### {.value-box-headers}
 
 ```{r}
-PDI%>%
-    kbl(booktabs = T, format = "html", align = "l")%>%kable_styling(full_width = T)
-
+flexdashboard::valueBox("Project Development Indicators",
+                        caption = "",
+                        color = "#F2F2F2"
+                        )
 ```
-**B. Intermediate Results Indicators**
+
+
+
+### PDI Box 1 {.value-box-indicators}
 
 ```{r}
-IRI$`Strengthening Emergency COVID-19 Health Care Response`%>%
-    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
-IRI$`Strengthening Laboratory Capacity at National and Sub-National Level`%>%
-    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
-IRI$`Implementation Management and Monitoring and Evaluation`%>%
-    kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T)
-
+flexdashboard::valueBox(PDI$Status[1],
+                        caption = paste0(PDI$short_name[1],
+                                         "<br>",
+                                         "Target: ", PDI$`Target (2022)`[1],
+                                         "<br>",
+                                         "Source: ", PDI$data_source[1]
+                                         ),
+                        icon = "fa-mask-face",
+                        color = if_else(PDI$targetReached[1],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
 ```
 
 
+### PDI Box 2 {.value-box-indicators}
+
+
+```{r}
+flexdashboard::valueBox(PDI$Status[2],
+                        caption = paste0(PDI$short_name[2],
+                                         "<br>",
+                                         "Target: ", PDI$`Target (2022)`[2],
+                                         "<br>",
+                                         "Source: ", PDI$data_source[2]
+                                         ),
+                        icon = "fa-vial-virus",
+                        color = if_else(PDI$targetReached[2],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### PDI Box 3 {.value-box-indicators}
+
+```{r}
+flexdashboard::valueBox(PDI$Status[3],
+                        caption = paste0(PDI$short_name[3],
+                                         "<br>",
+                                         "Target: ", PDI$`Target (2022)`[3],
+                                         "<br>",
+                                         "Source: ", PDI$data_source[3]
+                                         ),
+                        color = if_else(PDI$targetReached[3],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### PDI Box 4 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(PDI$Status[4],
+                        caption = paste0(PDI$short_name[4],
+                                         "<br>",
+                                         "Target: ", PDI$`Target (2022)`[4],
+                                         "<br>",
+                                         "Source: ", PDI$data_source[4]
+                                         ),
+                        color = if_else(PDI$targetReached[4],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### PDI Box 5 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(PDI$Status[5],
+                        caption = paste0(PDI$short_name[5],
+                                         "<br>",
+                                         "Target: ", PDI$`Target (2022)`[5],
+                                         "<br>",
+                                         "Source: ", PDI$data_source[5]
+                                         ),
+                        color = if_else(PDI$targetReached[5],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+Row
+--------------------------------------------
+
+### {.value-box-headers}
+
+```{r}
+flexdashboard::valueBox("Intermediate Results Indicators",
+                        caption = "Strengthening Emergency COVID-19 Health Care Response",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### IRI Box 1 {.value-box-indicators}
+
+```{r}
+flexdashboard::valueBox(IRI$Status[1],
+                        caption =  paste0(IRI$short_name[1],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[1],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[1]
+                                         ),
+                        # icon = "fa-times-circle",
+                        color = if_else(IRI$targetReached[1],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### IRI Box 2 {.value-box-indicators}
+
+
+```{r}
+flexdashboard::valueBox(IRI$Status[2],
+                        caption =  paste0(IRI$short_name[2],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[2],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[2]
+                                         ),
+                        # icon = "fa-times-circle",
+                        color = if_else(IRI$targetReached[2],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### IRI Box 3 {.value-box-indicators}
+
+```{r}
+flexdashboard::valueBox(IRI$Status[3],
+                        caption = paste0(IRI$short_name[3],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[3],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[3]
+                                         ),
+                        # icon = "fa-times-circle",
+                        color = if_else(IRI$targetReached[3],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### IRI Box 4 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[4],
+                        caption = paste0(IRI$short_name[4],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[4],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[4]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[4],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 5 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[5],
+                        caption = paste0(IRI$short_name[5],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[5],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[5]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[5],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+
+Row
+--------------------------------------------
+
+### {.value-box-headers}
+
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### IRI Box 6 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[6],
+                        caption = paste0(IRI$short_name[6],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[6],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[6]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[6],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 7 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[7],
+                        caption = paste0(IRI$short_name[7],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[7],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[7]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[7],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 8 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[8],
+                        caption = paste0(IRI$short_name[8],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[8],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[8]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[8],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 9 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[9],
+                        caption = paste0(IRI$short_name[9],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[9],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[9]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[9],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 10 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[10],
+                        caption = paste0(IRI$short_name[10],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[10],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[10]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[10],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+
+Row
+--------------------------------------------
+
+
+### {.value-box-headers}
+
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### IRI Box 11 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[11],
+                        caption = paste0(IRI$short_name[11],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[11],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[11]
+                                         ),,
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[11],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 12 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[12],
+                        caption = paste0(IRI$short_name[12],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[12],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[12]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[12],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 13 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[13],
+                        caption = paste0(IRI$short_name[13],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[13],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[13]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[13],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+
+
+Row
+---------------------
+
+
+### {.value-box-headers}
+
+```{r}
+flexdashboard::valueBox("Intermediate Results Indicators",
+                        caption = "Strengthening Laboratory Capacity at National and Sub-National Level",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+
+### IRI Box 14 {.value-box-indicators}
+
+```{r}
+flexdashboard::valueBox(IRI$Status[14],
+                        caption = paste0(IRI$short_name[14],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[14],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[14]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[14],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 15 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[15],
+                        caption = paste0(IRI$short_name[15],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[15],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[15]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[15],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+
+### IRI Box 16 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[16],
+                        caption = paste0(IRI$short_name[16],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[16],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[16]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[16],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+Row
+--------------------------------------------
+
+
+### {.value-box-headers}
+
+```{r}
+flexdashboard::valueBox("Intermediate Results Indicators",
+                        caption = "Implementation Management and Monitoring and Evaluation",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+### IRI Box 17 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[17],
+                        caption = paste0(IRI$short_name[17],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[17],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[17]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[17],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 18 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[18],
+                        caption = paste0(IRI$short_name[18],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[18],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[18]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[18],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### IRI Box 19 {.value-box-indicators}
+    
+```{r}
+flexdashboard::valueBox(IRI$Status[19],
+                        caption = paste0(IRI$short_name[19],
+                                         "<br>",
+                                         "Target: ", IRI$`Target (2022)`[19],
+                                         "<br>",
+                                         "Source: ", IRI$data_source[19]
+                                         ),
+                        # icon = "fa-check-circle",
+                        color = if_else(IRI$targetReached[19],
+                                        "#73D107",
+                                        "#f6554a")
+                        )
+```
+
+### {.value-box-indicators}
+```{r}
+flexdashboard::valueBox("",
+                        caption = "",
+                        # icon = "fa-check-circle",
+                        color = "#F2F2F2"
+                        )
+```
+
+
+<!-- ## The Project's Results Framework Indicators for the Parent Project (Original Loan) and Additional Financing are as follows: -->
+
+
+<!-- **A. Project Development Objective Indicators** -->
+
+<!-- ```{r} -->
+<!-- PDI%>% -->
+<!--     kbl(booktabs = T, format = "html", align = "l")%>%kable_styling(full_width = T) -->
+
+<!-- ``` -->
+
+<!-- **B. Intermediate Results Indicators** -->
+
+<!-- ```{r} -->
+<!-- IRI$`Strengthening Emergency COVID-19 Health Care Response`%>% -->
+<!--     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T) -->
+<!-- IRI$`Strengthening Laboratory Capacity at National and Sub-National Level`%>% -->
+<!--     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T) -->
+<!-- IRI$`Implementation Management and Monitoring and Evaluation`%>% -->
+<!--     kbl(booktabs = T, format = "html", align = "l", caption = "Strengthening Emergency COVID-19 Health Care Response")%>%kable_styling(full_width = T) -->
+
+<!-- ``` -->
 # Resources
+
 <br>
 
-[Project Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/DC%20NO.%202021-0142%20UPDATED%20POM.pdf)
+[PCERP Monitoring and Evaluation Manual]()
+<br>
+[Project Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/%5BDec%202021%5D%20PCERP%20Operations%20Manual.pdf)
 <br>
 [Project's Implementation Arrangement](https://doh.gov.ph/sites/default/files/basic-page/DEPARTMENT%20ORDER%20NO.%202021-0205%20IMPLEMENTATION%20ARRANGEMENT.pdf)
 <br>
-[Guidelines on the Project's Civil Works Implementation](https://doh.gov.ph/sites/default/files/basic-page/dc2020-0398.pdf)
+[Guidelines on the Project's Civil Works
+Implementation](https://doh.gov.ph/sites/default/files/basic-page/dc2020-0398.pdf)
 <br>
-[Contingency Emergency Response Component -- Emergency Response Operations Manual]()
+[Contingency Emergency Response Component -- Emergency Response
+Operations Manual](https://doh.gov.ph/sites/default/files/basic-page/dc2021-0314-PCERP-CERC.pdf)
 <br>
-[Stakeholder Engagement Plan (SEP) November 22, 2021](https://doh.gov.ph/sites/default/files/basic-page/SEP-nov-22-2021.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) November 22, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP-nov-22-2021.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/No%20Watermark_Stakeholder%20Engagement%20Plan%20%28SEP%29_Second%20AF%20PCERP_November%2003%202021.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) November 03, 2021](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29_Second%20AF%20PCERP_November%2003%202021_0.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/SEP%2003172021.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP%2003172021.pdf)
-<br>
-[Environmental and Social Management Framework (ESMF) March 23, 2021](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2003172021.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20SEP.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/02052021%20ESCP%20clean.pdf)
-<br>
-[Environmental and Social Management Framework (ESMF) February 4, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20ESMF.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20SEP-%20vaccine.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
-<br>
-[Environmental and Social Management Framework (ESMF) January 8, 2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) November 25, 2020]()
-<br>
+[Stakeholder Engagement Plan (SEP) November 22,
+2021](https://doh.gov.ph/sites/default/files/basic-page/SEP-nov-22-2021.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) November 22,
+2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP-nov-22-2021.pdf)
+<br> [Stakeholder Engagement Plan (SEP) November 03,
+2021](https://doh.gov.ph/sites/default/files/basic-page/No%20Watermark_Stakeholder%20Engagement%20Plan%20%28SEP%29_Second%20AF%20PCERP_November%2003%202021.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) November 03,
+2021](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29_Second%20AF%20PCERP_November%2003%202021_0.pdf)
+<br> [Stakeholder Engagement Plan (SEP) March 23,
+2021](https://doh.gov.ph/sites/default/files/basic-page/SEP%2003172021.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) March 23,
+2021](https://doh.gov.ph/sites/default/files/basic-page/ESCP%2003172021.pdf)
+<br> [Environmental and Social Management Framework (ESMF) March 23,
+2021](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2003172021.pdf)
+<br> [Stakeholder Engagement Plan (SEP) February 4,
+2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20SEP.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) February 4,
+2021](https://doh.gov.ph/sites/default/files/basic-page/02052021%20ESCP%20clean.pdf)
+<br> [Environmental and Social Management Framework (ESMF) February 4,
+2021](https://doh.gov.ph/sites/default/files/basic-page/clean%2002042021%20ESMF.pdf)
+<br> [Stakeholder Engagement Plan (SEP) January 8,
+2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20SEP-%20vaccine.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) January 8,
+2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
+<br> [Environmental and Social Management Framework (ESMF) January 8,
+2021](https://doh.gov.ph/sites/default/files/basic-page/clean%20rev%2001082021%20ESCP-%20vaccine.pdf)
+<br> [Stakeholder Engagement Plan (SEP) November 25, 2020]() <br>
 [Environmental and Social Commitment Plan (ESCP) November 25, 2020]()
+<br> [Environmental and Social Management Framework (ESMF) November 25,
+2020]() <br> [Stakeholder Engagement Plan (SEP) October 9,
+2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder-Engagement-Plan-v20201009.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) October 9,
+2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29%20%281%29.pdf)
+<br> [Environmental and Social Management Framework (ESMF) October 9,
+2020](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2011252020%20%281%29.pdf)
+<br> [Stakeholder Engagement Plan (SEP) August 4,
+2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder%20Engagement%20Plan%20%28SEP%29.pdf)
+<br> [Environmental and Social Commitment Plan (ESCP) August 4,
+2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29.pdf)
+<br> [Environmental and Social Management Framework (ESMF) August 4,
+2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Management%20Framework.pdf)
 <br>
-[Environmental and Social Management Framework (ESMF) November 25, 2020]()
-<br>
-[Stakeholder Engagement Plan (SEP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder-Engagement-Plan-v20201009.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29%20%281%29.pdf)
-<br>
-[Environmental and Social Management Framework (ESMF) October 9, 2020](https://doh.gov.ph/sites/default/files/basic-page/ESMF%2011252020%20%281%29.pdf)
-<br>
-[Stakeholder Engagement Plan (SEP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Stakeholder%20Engagement%20Plan%20%28SEP%29.pdf)
-<br>
-[Environmental and Social Commitment Plan (ESCP) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Commitment%20Plan%20%28ESCP%29.pdf)
-<br>
-[Environmental and Social Management Framework (ESMF) August 4, 2020](https://doh.gov.ph/sites/default/files/basic-page/Environmental%20and%20Social%20Management%20Framework.pdf)
-<br>
-
 
 # Contact us
-For inquiries or recommendations, please fill out the [Public GRM Form](https://ee.kobotoolbox.org/E8S1roA1)
+
+For inquiries or recommendations, please fill out the [Public GRM Form](https://ee.kobotoolbox.org/E8S1roA1){target="_blank"}
 <br><br><br><br>
-You may also contact:<br><br>
-<b>On the Project:</b><br>
+You may also contact:
+<br><br>
+<b>On the Project:</b>
+<br> 
 Mr. Manolito A. Novales<br>
-Project Coordinator IV / Project Team Leader<br>
-[manovales\@doh.gov.ph](mailto:manovales@doh.gov.ph){.email}<br>
-(02)8651 7800 local 1317<br>
+Project Coordinator IV / Project Team Leader
+<br>
+[manovales\@doh.gov.ph](mailto:manovales@doh.gov.ph){.email}
+<br>
+(02)8651 7800 local 1317
+<br>
 
-Mr. Bryan de Guzman <br>
-Deputy Project Team Leader for Additional Financing<br>
-[jbdeguzman@doh.gov.ph](mailto:jbdeguzman@doh.gov.ph){.email}<br>
-(02)8651 7800 local 1317<br>
+Mr. Bryan de Guzman
+<br>
+Deputy Project Team Leader for Additional Financing
+<br>
+[jbdeguzman\@doh.gov.ph](mailto:jbdeguzman@doh.gov.ph){.email}
+<br>
+(02)8651 7800 local 1317
+<br>
 
-Ms. Lovelie Q. Zulueta<br>
-Deputy Project Team Leader for the Parent Project<br>
-[lqzulueta@doh.gov.ph](mailto:lqzulueta@doh.gov.ph){.email}<br>
-(02)8651 7800 local 1317<br><br>
+Ms. Lovelie Q. Zulueta<br> Deputy Project Team Leader for the Parent
+Project
+<br>
+[lqzulueta\@doh.gov.ph](mailto:lqzulueta@doh.gov.ph){.email}
+<br>
+(02)8651 7800 local 1317
+<br><br>
 <b>On the Environmental and Social Framework:</b>
 <br>
-Ms. ⁨Maria Krystell G. Banaag-Año⁩
+Ms. ⁨Maria Krystell G. Banaag-Añ
+ <br>
+Environmental and Social Safeguards Specialist
 <br>
-Environmental and Social Safeguards Specialist<br>
-[mkbano\@doh.gov.ph](mailto:mkbano@doh.gov.ph){.email}<br>
-(02) 8651 7800 local 2324<br><br>
+[mkbano\@doh.gov.ph](mailto:mkbano@doh.gov.ph){.email}
+<br> (02) 8651 7800 local 2324
+<br><br>
 
-<b>On the Monitoring and Evaluation:</b><br>
-Ms. Vega Fria G. Postrano<br>
-Monitoring and Evaluation Specialist<br>
-[vfgpostrano\@doh.gov.ph](mailto:vfgpostrano@doh.gov.ph){.email}<br>
-(02) 8651 7800 local 1453<br>
+<b>On the Monitoring and Evaluation:</b>
+<br>
+Ms. Vega Fria G. Postrano
+<br>
+Monitoring and Evaluation Specialist
+<br>
+[vfgpostrano\@doh.gov.ph](mailto:vfgpostrano@doh.gov.ph){.email}
+<br>
+(02) 8651 7800 local 1453
+<br>
 
-Mr. John Conrad P. Dacusin<br>
-Project Assistant<br>
-[jcpdacusin\@doh.gov.ph](mailto:jcpdacusin@doh.gov.ph){.email}<br>
-(02)8651 7800 local 1453<br>
+Mr. John Conrad P. Dacusin
+<br> Project Assistant
+<br>
+[jcpdacusin\@doh.gov.ph](mailto:jcpdacusin@doh.gov.ph){.email}
+<br>
+(02)8651 7800 local 1453
+<br>
 
-Mr. Mark Benedict K. Mortera<br>
-Project Assistant<br>
-[mbkmortera\@doh.gov.ph](mailto:mbkmortera@doh.gov.ph){.email}<br>
-(02)8651 7800 local 1453<br><br>
+Mr. Mark Benedict K. Mortera
+<br> Project Assistant
+<br>
+[mbkmortera\@doh.gov.ph](mailto:mbkmortera@doh.gov.ph){.email}
+<br>
+(02)8651 7800 local 1453
+<br><br>
 
-<b>On the Deployment of the Project Procured Vaccines</b><br>
-Ms. Hannah P. Jara<br>
-Vaccine Specialist<br>
-hpjara@doh.gov.ph<br>
+<b>On the Deployment of the Project Procured Vaccines</b>
+<br>
+Ms. Hannah P. Jara
+<br>
+Vaccine Specialist
+<br>
+[hpjara\@doh.gov.ph](mailto:hpjara@doh.gov.ph){.email}
+<br>
 (02) 8651 7800 local 2361
 
 # Project Dashboards
 
-## Dashboards  {.tabset}
+## Dashboards {.tabset}
 
-### Form A
+### PCERP Form A PPE Supplies
 
-<iframe title="PowerBi Form A" width="100%" height="100%" margin="auto" width="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZmVhOTNhMjMtOTEyOS00ZDgwLTgwYTItZTM3MDNmNjZmZjRmIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
+<iframe title="PowerBi Form A" width="100%" height="100%" margin="auto" width="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZDYwMzNhNjktZmY4NS00NTQyLWI2OTctOGUxYTZkYWEzNzY1IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1">
 
-### Form B
+</iframe>
 
-<iframe title="PowerBi Form B" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiMGE5N2MwNzgtZThkZS00YzA0LWFmZTktZjliZGY3YzdkMTdkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
+
+### PCERP Form B Laboratory Supplies
+
+<iframe title="PowerBi Form B" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiNmI2YTg1NWYtODI4Yy00NWQ4LThkMTUtNTE0ODY3OGRhM2JjIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
 
 ### ESMP Community Environmental Health and Safety
 
-<iframe title="ESF 001 ESMP Community Environmental Health and Safety - Total mitigation measures" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiMWYwNzI5ZGUtZDVhZi00MTczLWE1NjEtMTg1ZjMzODUyOTc2IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
+<iframe title="ESF 001 ESMP Community Environmental Health and Safety - Total mitigation measures" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiMWYwNzI5ZGUtZDVhZi00MTczLWE1NjEtMTg1ZjMzODUyOTc2IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
 
 ### ESMP Occupational Health and Safety
 
-<iframe title="ESF 002 ESMP Occupational Health and Safety - Total mitigation measures" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiZmQ2YWJjZDYtYzAzNy00YjVmLWE5M2MtYzA1NjVhZmE4Y2I1IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
+<iframe title="ESF 002 ESMP Occupational Health and Safety - Total mitigation measures" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiZmQ2YWJjZDYtYzAzNy00YjVmLWE5M2MtYzA1NjVhZmE4Y2I1IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
+
+### ECOP Environmental Codes of Practice
+
+<iframe title="ESF 003 ECOP Environmental Codes of Practice" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiOGUxZjQ5ZGQtNDllNy00ODI0LWFkODAtZDA1MmNiZDhmMGJkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D&amp;pageName=ReportSection" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
+
+### LMP Labor Management Procedure
+
+<iframe title="ESF 004 LMP Labor Management Procedure - Labor and Working Conditions" width="100%" height="100%" margin="auto" src="https://app.powerbi.com/view?r=eyJrIjoiZWM1NTBkZDctYmU0YS00OTc0LTg0NjUtNTJhODc5YThlMjg5IiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
+
+</iframe>
 
 ### PCERP Procured Modern and Pfizer Vaccine Monitoring
 
-<iframe title="PowerBi Moderna_Pfizer_New - Vaccine monitoring" margin="auto" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiNWVkODVkMjMtYTMwYy00ZjlhLWExMTEtZTJjZmI2ZmJjODRkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1"></iframe>
+<iframe title="PowerBi Moderna_Pfizer_New - Vaccine monitoring" margin="auto" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiNWVkODVkMjMtYTMwYy00ZjlhLWExMTEtZTJjZmI2ZmJjODRkIiwidCI6IjE5NWQzN2JlLTllMGEtNDIwNS1hZGY0LWEyNTk5ZTllMWNjYSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" data-external="1">
 
+</iframe>
